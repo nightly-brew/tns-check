@@ -1,6 +1,6 @@
 # tns-check
 
-Oracle tnsnames.ora exploration web tool originally built by brantwills on github.
+Oracle tnsnames.ora exploration web tool originally built by brantwills on github.   
 This is a custom fork wich adds an end-of-line check to show whether the file is good for use on linux or windows machines
 
 No data is sent to a server, a large goal of this application is to keep the text local.
