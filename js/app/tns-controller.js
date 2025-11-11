@@ -43,6 +43,9 @@ angular.module('app-tns').controller('tnsController', ['$scope', '$filter', 'tns
          // Collect the raw string from the file
         var fileString = e.target.result;
 
+        // Check whether the file contains windows-style line breaks
+        var fileEolType = fileString.match(/\r\n/g) !== null ? "Windows-style EOL" : "Linux-style EOL"
+
         // Create Antlr4 items
         var chars = new antlr4.InputStream(fileString);
         var lexer = new tnsnamesLexer.tnsnamesLexer(chars);
@@ -71,6 +74,7 @@ angular.module('app-tns').controller('tnsController', ['$scope', '$filter', 'tns
         $scope.showRawText = true;
         $scope.parseErrors = tns.errors;
         $scope.file.fileString = fileString;
+        $scope.file.eolType = fileEolType;
         $scope.entryKeys = tnsHelper.getAllKeysFromEntries(tns.entries);
         $scope.entries = tnsHelper.setTextFromFileString(tns.entries, fileString);
         $scope.ExportEntries();
